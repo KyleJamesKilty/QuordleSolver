@@ -11,29 +11,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from ImportGuesses import guesses
 import time
 
-def OpenLogin():
+def openLogin():
     PATH = "C:\Program Files (x86)\chromedriver.exe"
     driver = webdriver.Chrome(PATH)
     driver.get("https://www.quordle.com/#/")
     return driver
-
-#Open
-#InitialGuess
-#Read1 -> Update Constraints 4 -> Check 4 -> Pick Word that could potentially be in most
-#Read2 
-#Read3
-#Read4
-#Read5
-#Read6
-#Read7
-#Read8
-#Read9
-
-#Read Function
-#Update Constraints
-#Check
 
 def retrieveTables(driver):
    table1 = driver.find_element_by_xpath("/html/body/div/div/div[2]/div[1]/div[1]/div[1]")
@@ -81,7 +66,7 @@ def stringSorter(string):
         return "Another"
     
 #reads guess in each row and puts it in dictionary if guess is not correct or wasnt correct
-def retrieval(rowCounter: int, correctGuesses: list ): #{1:{0:{"Present":[],"Contains":[],"Absent":[]}}}
+def retrieval(driver, rowCounter: int, correctGuesses: list ): #{1:{0:{"Present":[],"Contains":[],"Absent":[]}}}
     RowRetrieval = {}
     table = retrieveTables(driver)
     tableRows = retrieveTableRows(table)
@@ -97,18 +82,23 @@ def retrieval(rowCounter: int, correctGuesses: list ): #{1:{0:{"Present":[],"Con
             for letterIdx, string in enumerate(letterSpecs):
                 RowRetrieval[idx][letterIdx] = {"Present":[],"Another":[],"Absent":[]}
                 RowRetrieval[idx][letterIdx][stringSorter(string)].append(string[1])      
-    return RowRetrieval
+    return RowRetrieval, correctGuesses
         
-    
-driver = OpenLogin()
-time.sleep(5)
-RowRetrieval = retrieval(0,[0,0,0,0])
+def main():  
+    driver = openLogin()
+    time.sleep(15)
+    rowCounter = 0
+    correctGuesses = [0, 0, 0, 0]
+    while rowCounter < 10:
+        RowRetrieval, correctGuesses = retrieval(driver, rowCounter,correctGuesses)
+        print(RowRetrieval)
+        print(correctGuesses)
+        rowCounter += 1
+
+if __name__ == "__main__":
+   main()
 
 
 
-
-#"flex flex-col flex-auto p-1 first:pl-2 last:pr-2"
-#/html/body/div/div/div[2]/div[1]/div[1]/div[1]
-
-#I want to pass in [4 sets of [sets containing 5 letters]] update [4 sets] guess highest potential words. 
+#read -> update guesses ->
 
