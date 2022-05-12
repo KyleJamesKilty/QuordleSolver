@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun May  8 18:44:45 2022
-
 @author: Kyle
 """
 
@@ -11,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-from ImportGuesses import guesses
+from initializeStorage import loadStorage
 import time
 
 def openLogin():
@@ -84,12 +83,13 @@ def retrieval(driver, rowCounter: int, correctGuesses: list ): #{1:{0:{"Present"
                 RowRetrieval[idx][letterIdx][stringSorter(string)].append(string[1])      
     return RowRetrieval, correctGuesses
         
-def main():  
+def main():
+    allGuesses = loadStorage()
     driver = openLogin()
-    time.sleep(15)
+    time.sleep(10)
     rowCounter = 0
     correctGuesses = [0, 0, 0, 0]
-    while rowCounter < 10:
+    while rowCounter < 9:
         RowRetrieval, correctGuesses = retrieval(driver, rowCounter,correctGuesses)
         print(RowRetrieval)
         print(correctGuesses)
@@ -97,8 +97,3 @@ def main():
 
 if __name__ == "__main__":
    main()
-
-
-
-#read -> update guesses ->
-

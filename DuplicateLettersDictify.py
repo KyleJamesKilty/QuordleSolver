@@ -22,7 +22,14 @@ first = open("FilteredWords.txt", "r")
 second = open("FinalWordsList.txt", "w")
 secondDictionary = {}
 for line in first.readlines():
-    secondDictionary[line[:-1]] = [1, 1, 1, 1, hasDuplicates(line[:-1])]
-second.write(str(secondDictionary))   
+    flag = True
+    for i in range(5):
+        if line[i] == "'" or line[i] == ".":
+            flag = False
+            print(line[:-1])
+    if flag:
+        secondDictionary[line[:-1]] = [0, 0, 0, 0, hasDuplicates(line[:-1])]
+newDictionary = (str(secondDictionary)).replace("'",'"')
+second.write(newDictionary)
 first.close()
 second.close()
