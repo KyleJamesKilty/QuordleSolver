@@ -87,10 +87,10 @@ def findNextGuess(allGuesses, correctGuesses):
                         if value[validTables] == 0:
                             guess = word
                             print(guess)
-                            value[1] == 1
-                            value[2] == 1
-                            value[3] == 1
-                            value[4] == 1
+                            value[1] = 1
+                            value[2] = 1
+                            value[3] = 1
+                            value[4] = 1
                             
                             return guess, allGuesses
                             
@@ -116,7 +116,7 @@ def retrieval(driver, rowCounter: int, correctGuesses: list ): #{1:{0:{"Present"
     return RowRetrieval, correctGuesses
 
 
-def validWord(word, rowTableRetrieval):
+def validWord(word, rowTableRetrieval, letterCounts):
     word = word.upper()
     for letterIndex, presentAnotherAbsent in rowTableRetrieval.items():
         Present = presentAnotherAbsent['Present']
@@ -131,8 +131,14 @@ def validWord(word, rowTableRetrieval):
                 return False
         
         if len(Absent) != 0:
-            if Absent[0] in word:
-                return False
+            validAbsent = True
+            for letter, minMax in letterCounts.items():
+                if Absent[0] == letter:
+                    if minMax[0] == minMax[1]:
+                        validAbsent = False
+            if validAbsent:
+                if Absent[0] in word: 
+                    return False
         
     return True
     
@@ -241,7 +247,7 @@ def filterAllGuesses(allGuesses: dict, letterCounts, rowRetrieval):
                     if not validCount(word, letterCounts[tableIdx]):
                         value[tableIdx] = 1 #Think this mutates list in dictionary but not sure
                         continue
-                    if not validWord(word, rowRetrieval[tableIdx]):
+                    if not validWord(word, rowRetrieval[tableIdx], letterCounts[tableIdx]):
                         value[tableIdx] = 1
                         continue
     return allGuesses
@@ -252,7 +258,7 @@ def main():
     allGuesses = loadStorage()
     driver = openLogin()
     preparepage(driver)
-    sendguess("penis", 0.5 , driver) #Initial Guess
+    sendguess("poops", 0.5 , driver) #Initial Guess
     time.sleep(1)
     rowCounter = 0
     correctGuesses = [0, 0, 0, 0]
