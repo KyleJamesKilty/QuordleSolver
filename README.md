@@ -1,18 +1,17 @@
 # QuordleSolver
-Solver of the popular New York Times Wordle Variant, Quordle. Found on https://www.quordle.com.
-Created using Python with it's Selenium library.
 
-Introduction
-This project aims to solve quordle hands-free after an initial guess of the user's choice. 
-The main goal is to solve Quordle in as few guesses as possible. 
+### Introduction
+Solver of the popular New York Times Wordle Variant, Quordle. Created using Python and Selenium library. 
 
-Additional goals:
--accurately filter results of each guess using as few computations as possible.
--keep code clean and maintainable.
--make use of easy to read data structures to help with debugging.
+Play the game on (https://www.quordle.com).  
 
+This project aims to solve quordle in a few guesses as possible after an initial guess of the user's choice. 
+
+##### Adieu initial guess
 ![QuordleGif1](https://github.com/KyleJamesKilty/QuordleSolver/blob/Images/QuordleGifs/2022-09-22%2016-59-27(1).gif)
+##### Beers initial guess
 ![QuordleGif2](https://github.com/KyleJamesKilty/QuordleSolver/blob/Images/QuordleGifs/2022-09-22%2017-00-50(1).gif)
+##### Funny initial guess
 ![QuordleGif2](https://github.com/KyleJamesKilty/QuordleSolver/blob/Images/QuordleGifs/2022-09-22%2017-02-19.gif)
 
 
