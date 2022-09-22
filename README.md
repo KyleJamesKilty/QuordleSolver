@@ -14,13 +14,6 @@ This project aims to solve quordle in a few guesses as possible after an initial
 ##### Funny initial guess
 ![QuordleGif2](https://github.com/KyleJamesKilty/QuordleSolver/blob/Images/QuordleGifs/2022-09-22%2017-02-19.gif)
 
-
-Technologies:
--ChromeWebDriver https://chromedriver.chromium.org/downloads
--Selenium https://www.selenium.dev/downloads/
--Python https://www.python.org/downloads/
-
-Launch:
 ## How to get this program running
 1.Download Anaconda (https://www.anaconda.com/products/distribution).  
 1.Download ChomeWebDriver (https://www.anaconda.com/products/distribution).  
