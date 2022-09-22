@@ -27,5 +27,5 @@ Launch:
 2.Open the Spyder development environment that comes installed with Anaconda.  
 3.Install Selenium. Using "pip install selenium" in console.  
 4.Open the file or paste it into Spyder. Make sure it is saved with the .py extension.  
-5.Change PATH variable in the Main.py near top of file. Set it to the file path of your ChromeWebDriver.
-5.Press Run.  
+5.Change PATH variable in the Main.py near top of file. Set it to the file path of your ChromeWebDriver.  
+5.Press Run.   
