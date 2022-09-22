@@ -21,16 +21,11 @@ Technologies:
 -Python https://www.python.org/downloads/
 
 Launch:
-After installing Python, Selenium, and ChromeWebDriver. You must edit the PATH variable location inside 
-Main.py in the openLogin function near the top of the file. 
-
-PATH = "C:\Program Files (x86)\chromedriver.exe"
-
-Change the path variable to the location of where you installed the ChromeWebDriver.
-
-To modify the initial guesses, change, remove, or add any words in the guessList variable found
-in the main function near the bottom of the file.
-
-Currently, the program will sequentially solve a wordle for each guess currently listed.
-
-Run the program.
+## How to get this program running
+1.Download Anaconda (https://www.anaconda.com/products/distribution).  
+1.Download ChomeWebDriver (https://www.anaconda.com/products/distribution).  
+2.Open the Spyder development environment that comes installed with Anaconda.  
+3.Install Selenium. Using "pip install selenium" in console.  
+4.Open the file or paste it into Spyder. Make sure it is saved with the .py extension.  
+5.Change PATH variable in the Main.py near top of file. Set it to the file path of your ChromeWebDriver.
+5.Press Run.  
