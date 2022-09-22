@@ -23,7 +23,22 @@ This project aims to solve quordle in a few guesses as possible after an initial
 5.Change PATH variable in the Main.py near top of file. Set it to the file path of your ChromeWebDriver.  
 5.Press Run.   
 
-### Additonal Details
+#### Additonal Details
+#### Interacting with Quordle.com
+The program simply uses Selenium to handle all the interaction logic with the website. After running the program, Selenium will open up the web browser and go to Quordle, enter guesses into the Quordle game, and retrieve information about each guesses.
+
+#### Logic
+After each guess is retrieved, each entry in the guess json will be checked to make sure it has no absent letters, there are no letters in an incorrect position, and the word contains no less than the minimum amount of each letter, and no more than the maximum amount of each letter. Narrowed down from all earlier guesses.
+
+The logic will ensure each of 5 things for each entry in the guess json.  
+1. Any words with absent letters are ineligible.  
+2. Any words that don't have a correctly positioned letter are ineligble.  
+3. Any words that have a present letter in the incorrect spot are ineligible.  
+
+Using the responses from the previous guesses, logic will narrow down present letter counts.  
+
+4. Any words below the minimum count of a present letter will be eliminated.  
+5. Any words above the maximum count of a present letter will be eliminated.  
 
 #### Guess-List
 The guess json that has been included in the folder under the file name "weighted-guess.json" includes every 5 letter word in the English Dictionary. The guesses are sorted in order of frequency use across all Wikipedia articles. For example "where" and "apple" come fairly early in the list where an uncommon word like "soare" (meaning a young hawk) are low on the list. This was done because really really uncommon words are never usually used for the answers of Quordle. We don't want to waste a guess on something like that.
