@@ -258,7 +258,7 @@ def main():
     allGuesses = loadStorage()
     driver = openLogin()
     preparepage(driver)
-    sendguess("poops", 0.5 , driver) #Initial Guess
+    sendguess("funny", 0.5 , driver) #Initial Guess
     time.sleep(1)
     rowCounter = 0
     correctGuesses = [0, 0, 0, 0]

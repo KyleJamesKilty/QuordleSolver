@@ -7,7 +7,7 @@ Created on Sat May  7 20:20:01 2022
 import json
 
 def loadStorage():
-    with open("NewTextDocument.json","r") as fiveletterwords:
+    with open("all-weighted-guesses.json","r") as fiveletterwords:
         data = json.load(fiveletterwords)
     
     return data
