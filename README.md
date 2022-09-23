@@ -28,8 +28,8 @@ This project aims to solve quordle in a few guesses as possible after an initial
 The program simply uses Selenium to handle all the interaction logic with the website. After running the program, Selenium will open up the web browser and go to Quordle, enter guesses into the Quordle game, and retrieve information about each guess.
 
 #### Logic
-After each guess is retrieved, each entry in the guess json will be checked to make sure it has no absent letters, there are no letters in an incorrect position, and the word contains no less than the minimum amount of each letter, and no more than the maximum amount of each letter. Narrowed down from all earlier guesses.
 
+After the results of each guess are received:  
 The logic will ensure each of 5 things for each entry in the guess json.  
 1. Any words with absent letters are ineligible.  
 2. Any words that don't have a correctly positioned letter are ineligble.  
