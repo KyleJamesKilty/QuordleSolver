@@ -25,7 +25,7 @@ This project aims to solve quordle in a few guesses as possible after an initial
 
 #### Additonal Details
 #### Interacting with Quordle.com
-The program simply uses Selenium to handle all the interaction logic with the website. After running the program, Selenium will open up the web browser and go to Quordle, enter guesses into the Quordle game, and retrieve information about each guesses.
+The program simply uses Selenium to handle all the interaction logic with the website. After running the program, Selenium will open up the web browser and go to Quordle, enter guesses into the Quordle game, and retrieve information about each guess.
 
 #### Logic
 After each guess is retrieved, each entry in the guess json will be checked to make sure it has no absent letters, there are no letters in an incorrect position, and the word contains no less than the minimum amount of each letter, and no more than the maximum amount of each letter. Narrowed down from all earlier guesses.
@@ -41,9 +41,9 @@ Using the responses from the previous guesses, logic will narrow down present le
 5. Any words above the maximum count of a present letter will be eliminated.  
 
 #### Guess-List
-The guess json that has been included in the folder under the file name "weighted-guess.json" includes every 5 letter word in the English Dictionary. The guesses are sorted in order of frequency use across all Wikipedia articles. For example "where" and "apple" come fairly early in the list where an uncommon word like "soare" (meaning a young hawk) are low on the list. This was done because really really uncommon words are never usually used for the answers of Quordle. We don't want to waste a guess on something like that.
+The guess json that has been included in the folder under the file name "weighted-guess.json" includes every 5 letter word in the English Dictionary. The guesses are sorted in order of frequency of use across all Wikipedia articles. For example "where" and "apple" come fairly early in the list, when an uncommon word like "soare" (meaning a young hawk) are low on the list. This was done because extremely uncommon words are never usually used for the answers of Quordle. We don't want to waste a guess on something like that.
 
-Secondly, the list also keeps track of the highest duplicate letter count for each word. This is done so the program can prefer guesses of words that don't use duplicate letters until it is forced to from lack of options. Guessing words with multiple of one letter is not a good strategy for narrowing down words that can't be used.
+Secondly, the list also keeps track of the highest duplicate letter count for each word. This is done so the program can prefer guesses of words that don't use duplicate letters, until it is forced to from lack of options. Guessing words with multiple of one letter is not a good strategy for narrowing down words that can't be used.
 
 Here is the format for each entry in "weighted-guess.json":   
 String:Word = [int:WorldeGame1, int:WordleGame2, int:WordleGame3, int:WordleGame4, int:highestDuplicateLetter]  
@@ -52,9 +52,9 @@ No duplicate = 0, One duplicate = 1, Two duplicates = 2 etc.
 
 ##### Example  
 At the start of the game:  
-"boony" = [0,0,0,0,1] // Boony is a potential guess for all 4 games, and is has one duplicate.  
+"boony" = [0,0,0,0,1] // Boony is a potential guess for all 4 games, and has one duplicate.  
 
 
-Later on in the game once some of the words have been guessed:  
+Later on in the game- once some of the words have been guessed:  
 "boony" = [1,0,1,0,1] // Boony is no longer a potential guess for game 1 or game 3. 
 
