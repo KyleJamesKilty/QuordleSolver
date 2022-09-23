@@ -56,5 +56,5 @@ At the start of the game:
 
 
 Later on in the game- once some of the words have been guessed:  
-"boony" = [1,0,1,0,1] // Boony is no longer a potential guess for game 1 or game 3. 
+"boony" = [1,0,1,0,1] // Boony is no longer a potential guess for game 1 or game 3. Is still a viable guess for game 2 or 4. One duplicate is constant.
 
