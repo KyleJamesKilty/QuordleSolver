@@ -340,7 +340,7 @@ def main():
         if solved(correctGuesses):
             print()
             print("Solved Successfully!")
-            time.sleep(30)
+            time.sleep(120)
             break
         guess, allGuesses = findNextGuess(allGuesses, correctGuesses)
         sendguess(guess, 0.5, driver)
