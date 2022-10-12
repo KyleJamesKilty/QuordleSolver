@@ -106,7 +106,7 @@ def findNextGuess(allGuesses, correctGuesses):
                     if correctGuesses[validTables] == False:
                         if value[validTables] == 0:
                             guess = word
-                            print("Most Optimal guess: ", guess)
+                            print("Most Optimal guess:", guess)
                             value[1] = 1
                             value[2] = 1
                             value[3] = 1
@@ -293,6 +293,16 @@ def filterAllGuesses(allGuesses: dict, letterCounts, rowRetrieval):
     return allGuesses
 
 
+def LogSurvivingKeyValues(allGuesses):
+    for key, value in allGuesses.items():
+        count = 0
+        for i in range(4):
+            if value[i] == 0:
+                count += 1
+        if count > 0:
+            print(key, value)
+
+
 def solved(correctGuesses):
     for guess in correctGuesses:
         if guess == 0:
@@ -304,20 +314,33 @@ def main():
     allGuesses = loadStorage()
     driver = openLogin()
     preparepage(driver)
-    sendguess("space", 0.5, driver)  # Initial Guess
+    IG = "space"
+    sendguess(IG, 0.5, driver)  # Initial Guess
+    print(f"Initial guess is: {IG}")
+    print(
+        "Each proceeding guess is calculated based of the results of all previous guesses"
+    )
     time.sleep(1)
     rowCounter = 0
     correctGuesses = [0, 0, 0, 0]
     letterCounts = {0: {}, 1: {}, 2: {}, 3: {}}
     while rowCounter < 9:
         rowRetrieval, correctGuesses = retrieval(driver, rowCounter, correctGuesses)
+        print("")
+        print(rowRetrieval)
+        print("")
         # Debug RowRetrieval
         letterCounts = updateCount(letterCounts, rowRetrieval)
+        print(letterCounts)
         allGuesses = filterAllGuesses(allGuesses, letterCounts, rowRetrieval)
+        print("")
+        LogSurvivingKeyValues(allGuesses)
+        print("")
         rowCounter += 1
         if solved(correctGuesses):
             print()
             print("Solved Successfully!")
+            time.sleep(30)
             break
         guess, allGuesses = findNextGuess(allGuesses, correctGuesses)
         sendguess(guess, 0.5, driver)
